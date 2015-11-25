@@ -1,0 +1,42 @@
+<html>
+<script>
+function Kvadar(a,b,c){
+	this._a = a || 10;
+	this._b = b || 10;
+	this._c = c || 10;
+
+	this.setA = function(a){
+		this._a = a;
+	}
+} 
+
+Kvadar.prototype.povrsina = function(){
+	return 2*(this._a * this._b + this._a * this._c + this._c * this._b);
+}
+
+Kvadar.prototype.getA = function(a){
+	return this._a;
+}
+
+function DekCigla(){
+	Kvadar.call(this);
+}
+DekCigla.prototype.povrsina = function(){
+	return 2*(this._a * this._b + this._a * this._c + this._c * this._b) + 'cm3';
+}
+
+window.onload = function(e){
+	var blok = new Kvadar(20,20,20);
+	blok.setA(100);
+	var res = document.getElementById('pov');
+
+	var cigla = new DekCigla;
+	cigla.setA(30);
+
+	res.innerHTML = cigla.povrsina();
+}
+</script>
+<body>
+Rezultat: <span id="pov"></span>
+</body>
+</html>
